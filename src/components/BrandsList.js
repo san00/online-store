@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Brand from "./Brand";
+
 function BrandsList({ query }) {
+  const [activeBrand, setActiveBrand] = useState("");
+
   const displayResults = query ? (
     query.map((brand) => {
-      return <Brand brand={brand} key={brand.id}/>;
+      if (brand.brews[0].name === activeBrand || activeBrand === "") {
+        return (
+          <Brand brand={brand} key={brand.id} setActiveBrand={setActiveBrand} />
+        );
+      }
     })
   ) : (
     <h2>'Unable to load brands'</h2>

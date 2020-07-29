@@ -1,11 +1,12 @@
 import React from "react";
 import Brew from "./Brew";
 
-function BrewsList({ query }) {
+function BrewsList({ query, brandId }) {
   const displayResults = query ? (
     query.map((brew) => {
-      console.log(brew.name);
-      return <Brew brew={brew} key={brew.id} />;
+      if (brew.brand.id === brandId) {
+        return <Brew brew={brew} key={brew.id} />;
+      }
     })
   ) : (
     <h2>'Unable to load brews'</h2>

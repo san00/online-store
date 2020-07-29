@@ -12,7 +12,7 @@ function FetchBrews(props) {
       const res = await axios.get(brewsUri, {
         data: {
           query: `query {
-                brand(id:"${props.match.params.id}") {
+                brand(id:"${props.match.params.brandId}") {
                   _id
                   name
                   brews {
@@ -27,17 +27,16 @@ function FetchBrews(props) {
               }`,
         },
       });
-      console.log(res.data + "hello");
+
       setBrewQuery(res.data);
-      console.log(brewQuery);
     };
-    console.log(brewQuery);
+
     fetchData();
   }, []);
 
   return (
     <div>
-      <BrewsList query={brewQuery} />
+      <BrewsList query={brewQuery} brandId={props.match.params.brandId} />
     </div>
   );
 }
