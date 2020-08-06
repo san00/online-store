@@ -4,14 +4,22 @@ import { CartContext } from "./CartContext";
 function Cart() {
   const context = useContext(CartContext);
 
-  const products = Object.entries(context.cart).map(([, item]) => {
-    return item;
-  });
-
   return (
     <div>
-      {products && <span>Items in cart: {products.length}</span>}
-      <span>Total :0 </span>
+      <span>Shopping cart:</span>
+      <div>
+        {Object.entries(context.cart).map(([key, item]) => {
+          console.log(key, item);
+          return (
+            <div key={key.id}>
+              <p>{item.name}</p>
+              {item.price}
+              <span> GBP </span>
+              <p>{item.quantity}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
