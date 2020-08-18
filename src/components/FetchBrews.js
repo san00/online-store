@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import BrewsList from "./BrewsList";
+import { CartContext } from "./CartContext";
 
 function FetchBrews(props) {
   const [brewQuery, setBrewQuery] = useState([]);
+  const setProducts = useContext(CartContext).setProducts;
 
   const brewsUri = "http://localhost:1337/Brews";
 
@@ -27,16 +29,16 @@ function FetchBrews(props) {
               }`,
         },
       });
-
       setBrewQuery(res.data);
+      setProducts(res.data);
     };
-
+    
     fetchData();
   }, []);
 
   return (
     <div>
-      <BrewsList query={brewQuery} brandId={props.match.params.brandId} />
+      <BrewsList brandId={props.match.params.brandId} />
     </div>
   );
 }
