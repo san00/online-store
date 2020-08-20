@@ -2,24 +2,28 @@ import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
 
 function Cart() {
-  const context = useContext(CartContext);
+  const { cart } = useContext(CartContext);
+
+  const cartItemIds = [...cart.cartId];
+
+  let inCart = <p>{"no items in cart"}</p>;
+
+  if (cartItemIds.length >= 0) {
+    inCart = cartItemIds.map((item) => {
+      const productIndex = cart.products.findIndex(
+        (product) => item === product._id
+      );
+      //save product with the current index to cart
+      const productToAdd = cart.products[productIndex];
+      return <li>{productToAdd.name}</li>;
+    });
+  }
 
   return (
     <div>
       <span>Shopping cart:</span>
-      <div>
-        {Object.entries(context.cart).map(([key, item]) => {
-          console.log(key, item);
-          return (
-            <div key={key.id}>
-              <p>{item.name}</p>
-              {item.price}
-              <span> GBP </span>
-              <p>{item.quantity}</p>
-            </div>
-          );
-        })}
-      </div>
+      {inCart.length} items
+      <ul>{inCart}</ul>
     </div>
   );
 }
