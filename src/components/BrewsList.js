@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "./CartContext";
 import Brew from "./Brew";
 
-function BrewsList({ query, brandId }) {
-  const displayResults = query ? (
-    query.map((brew) => {
+function BrewsList({ brandId }) {
+  const context = useContext(CartContext);
+
+  const displayResults = context.cart.products ? (
+    context.cart.products.map((brew) => {
       if (brew.brand.id === brandId) {
+        console.log(brew);
         return <Brew brew={brew} key={brew.id} />;
       }
     })
