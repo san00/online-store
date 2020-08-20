@@ -8,10 +8,21 @@ function CartProvider({ children }) {
   });
 
   const setProducts = (products) => {
-    let allProducts = [...products] || [];
+    let allProducts = [...products];
     const updatedObject = {
       cartId: [...cart.cartId],
       products: allProducts,
+    };
+
+    setCart(updatedObject);
+  };
+
+  const setCartIds = (productId) => {
+    let itemToAddToCart = [productId];
+
+    const updatedObject = {
+      cartId: [...cart.cartId, ...itemToAddToCart],
+      products: [...cart.products],
     };
 
     setCart(updatedObject);
@@ -23,6 +34,7 @@ function CartProvider({ children }) {
         cart: cart,
         setCart: setCart,
         setProducts: setProducts,
+        setCartIds: setCartIds,
       }}
     >
       {children}
