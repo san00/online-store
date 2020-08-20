@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
+import CartItem from "./CartItem";
 
 function Cart() {
   const { cart } = useContext(CartContext);
@@ -15,16 +16,17 @@ function Cart() {
       );
       //save product with the current index to cart
       const productToAdd = cart.products[productIndex];
-      return <li>{productToAdd.name}</li>;
+      console.log(productToAdd);
+      return <CartItem productToAdd={productToAdd} key={item.id} />;
     });
   }
 
   return (
-    <div>
+    <article>
       <span>Shopping cart:</span>
       {inCart.length} items
-      <ul>{inCart}</ul>
-    </div>
+      {inCart}
+    </article>
   );
 }
 
