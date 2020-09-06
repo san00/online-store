@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Brand from "./Brand";
 
+import Flex from "./styles/Flex";
+
 function BrandsList({ query }) {
   const [activeBrand, setActiveBrand] = useState("");
 
@@ -15,7 +17,7 @@ function BrandsList({ query }) {
   ) : (
     <h2>'Unable to load brands'</h2>
   );
-  return <div>{displayResults}</div>;
+  return <Flex justifyAround>{displayResults}</Flex>;
 }
 
 export default BrandsList;
