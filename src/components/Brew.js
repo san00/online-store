@@ -1,24 +1,31 @@
 import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
-import styled from "styled-components";
+
+import Text from "./styles/Text";
+import Image from "./styles/Image";
+import Card from "./styles/Card";
+import Heading from "./styles/Heading";
 
 function Brew({ brew }) {
-  const setCartIds = useContext(CartContext).setCartIds;
-  const Image = styled.img`
-    width: 15em;
-  `;
+  const { setCartIds } = useContext(CartContext);
 
   return (
-    <div>
-      <p>{brew.name}</p>
-       <Image
+    <Card>
+      <Image
         src={`http://localhost:1337${brew.image.url}`}
         alt="brew logo"
       ></Image>
-      <p>{brew.description}</p>
-      <p>{brew.price}</p>
-      <button onClick={() => setCartIds(brew.id)}> add to cart</button>
-    </div>
+      <Heading h5>{brew.name}</Heading>
+      <Text>{brew.description}</Text>
+      <Text>{brew.price}</Text>
+      <button
+        onClick={() => {
+          setCartIds(brew.id);
+        }}
+      >
+        Add to cart
+      </button>
+    </Card>
   );
 }
 
