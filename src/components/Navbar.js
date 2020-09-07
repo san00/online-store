@@ -1,26 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import Cart from "./Cart";
+
+import Flex from "./styles/Flex";
+import Container from "./styles/Container";
+import Heading from "./styles/Heading";
 
 function Navbar() {
-  const Heading = styled.nav`
-    color: palevioletred;
-    font-size: 1.5em;
-  `;
-  const Nav = styled.nav`
-    display: flex;
-    justify-content: space-around;
-    padding:1em;
-  `;
-
   return (
-    <nav>
-      <Nav>
-        <Link to="/signup">Signin</Link>
+    <Container>
+      <Flex justifyAround>
         <Heading>Shop-A-Lot</Heading>
+      </Flex>
+      <Flex justifyAround>
+        <Link to="/signup">Login</Link>
+        <Cart />
         <Link to="/signin">Signup</Link>
-      </Nav>
-    </nav>
+      </Flex>
+    </Container>
   );
 }
 
