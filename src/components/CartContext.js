@@ -18,14 +18,24 @@ function CartProvider({ children }) {
   };
 
   const setCartIds = (productId) => {
-    let itemToAddToCart = [productId];
+    let quantity = 1;
+    let idExists = cart.cartId.findIndex((item) => item.id === productId);
 
-    const updatedObject = {
-      cartId: [...cart.cartId, ...itemToAddToCart],
-      products: [...cart.products],
-    };
+    if (idExists === -1) {
+      let itemsToAddToCart = { id: productId, quantity: quantity };
 
-    setCart(updatedObject);
+      const updatedObject = {
+        cartId: [...cart.cartId, itemsToAddToCart],
+        products: [...cart.products],
+      };
+      setCart(updatedObject);
+    } else {
+      const cartClone = {
+        ...cart,
+      };
+      quantity = cartClone.cartId[idExists].quantity++;
+      setCart(cartClone);
+    }
   };
 
   return (
