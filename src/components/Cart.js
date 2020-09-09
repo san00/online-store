@@ -12,11 +12,10 @@ function Cart() {
   if (cartItemIds.length >= 0) {
     inCart = cartItemIds.map((item) => {
       const productIndex = cart.products.findIndex(
-        (product) => item === product._id
+        (product) => item.id === product._id
       );
       //save product with the current index to cart
       const productToAdd = cart.products[productIndex];
-      console.log(productToAdd);
       return <CartItem productToAdd={productToAdd} key={item.id} />;
     });
   }
@@ -24,7 +23,6 @@ function Cart() {
   return (
     <article>
       <span>Shopping cart:</span>
-      {inCart.length} items
       {inCart}
     </article>
   );
