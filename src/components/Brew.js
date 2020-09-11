@@ -7,7 +7,7 @@ import Card from "./styles/Card";
 import Heading from "./styles/Heading";
 
 function Brew({ brew }) {
-  const { setCartIds } = useContext(CartContext);
+  const { setCartIds, setRemoveFromCartIds } = useContext(CartContext);
 
   return (
     <Card>
@@ -24,6 +24,13 @@ function Brew({ brew }) {
         }}
       >
         Add to cart
+      </button>
+      <button
+        onClick={() => {
+          setRemoveFromCartIds(brew.id);
+        }}
+      >
+        Remove from cart
       </button>
     </Card>
   );
