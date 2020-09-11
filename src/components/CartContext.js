@@ -38,6 +38,21 @@ function CartProvider({ children }) {
     }
   };
 
+  const setRemoveFromCartIds = (productId) => {
+    let idExists = cart.cartId.findIndex((item) => item.id === productId);
+    const cartClone = {
+      ...cart,
+    };
+
+    if (cartClone.cartId[idExists].quantity >= 2) {
+      cartClone.cartId[idExists].quantity--;
+      setCart(cartClone);
+    } else if (cartClone.cartId[idExists].quantity === 1) {
+      cartClone.cartId[idExists].quantity = 0;
+      setCart(cartClone);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -45,6 +60,7 @@ function CartProvider({ children }) {
         setCart: setCart,
         setProducts: setProducts,
         setCartIds: setCartIds,
+        setRemoveFromCartIds: setRemoveFromCartIds,
       }}
     >
       {children}
