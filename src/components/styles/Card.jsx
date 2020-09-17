@@ -8,5 +8,7 @@ justify-content:center;
 align-items:center;
 width:20em;
 padding:16px;
+border: 1px solid #e2e8f0;
+border-radius:0.5em;
 `
 export default Card

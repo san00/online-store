@@ -9,6 +9,8 @@ text-align: ${props => {
 }};
 word-break: normal;
 font-size: ${props => (props.bodySmall ? '0.8em' : '1em')};
+color:#4a5568; 
+background-color:#f7fafc;
  `;
 
 export default Text
