@@ -5,6 +5,8 @@ import Text from "./styles/Text";
 import Image from "./styles/Image";
 import Card from "./styles/Card";
 import Heading from "./styles/Heading";
+import Button from "./styles/Button"
+import Flex from "./styles/Flex";
 
 function Brew({ brew }) {
   const { setCartIds, setRemoveFromCartIds } = useContext(CartContext);
@@ -18,20 +20,22 @@ function Brew({ brew }) {
       <Heading h5>{brew.name}</Heading>
       <Text>{brew.description}</Text>
       <Text>{brew.price}</Text>
-      <button
+      <Flex>
+      <Button small
         onClick={() => {
           setCartIds(brew.id);
         }}
       >
-        Add to cart
-      </button>
-      <button
+       Add to cart
+      </Button >
+      <Button secondary small
         onClick={() => {
           setRemoveFromCartIds(brew.id);
         }}
       >
-        Remove from cart
-      </button>
+       Remove
+      </Button>
+      </Flex>
     </Card>
   );
 }

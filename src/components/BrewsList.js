@@ -16,7 +16,7 @@ function BrewsList({ brandId }) {
   ) : (
     <h2>'Unable to load brews'</h2>
   );
-  return<Flex justifyAround>{displayResults}</Flex>;
+  return<Flex justifyCenter>{displayResults}</Flex>;
 }
 
 export default BrewsList;
