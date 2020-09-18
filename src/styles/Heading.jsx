@@ -6,6 +6,7 @@ const baseStyle = css`
     color: #202020;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    line-height:1.25em;
     margin-top: 0;
     text-align: ${props => {
         if (props.center) return 'center'

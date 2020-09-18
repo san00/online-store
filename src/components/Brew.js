@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
 
-import Text from "./styles/Text";
-import Image from "./styles/Image";
-import Card from "./styles/Card";
-import Heading from "./styles/Heading";
-import Button from "./styles/Button"
-import Flex from "./styles/Flex";
+import Text from "../styles/Text";
+import Image from "../styles/Image";
+import Card from "../styles/Card";
+import Heading from "../styles/Heading";
+import Button from "../styles/Button"
+import Flex from "../styles/Flex";
 
 function Brew({ brew }) {
   const { setCartIds, setRemoveFromCartIds } = useContext(CartContext);

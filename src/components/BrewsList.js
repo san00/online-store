@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
 import Brew from "./Brew";
 
-import Flex from "./styles/Flex";
+import Flex from "../styles/Flex";
 
 function BrewsList({ brandId }) {
   const context = useContext(CartContext);

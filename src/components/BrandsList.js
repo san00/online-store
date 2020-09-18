@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Brand from "./Brand";
 
-import Flex from "./styles/Flex";
+import Flex from "../styles/Flex";
 
 function BrandsList({ query }) {
   const [activeBrand, setActiveBrand] = useState("");
