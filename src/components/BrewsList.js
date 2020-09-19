@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
 import Brew from "./Brew";
 
-import Flex from "./styles/Flex";
+import Flex from "../styles/Flex";
 
 function BrewsList({ brandId }) {
   const context = useContext(CartContext);
@@ -16,7 +16,7 @@ function BrewsList({ brandId }) {
   ) : (
     <h2>'Unable to load brews'</h2>
   );
-  return<Flex justifyAround>{displayResults}</Flex>;
+  return<Flex justifyCenter>{displayResults}</Flex>;
 }
 
 export default BrewsList;

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Image } from "./styles/Image";
-import Text from "./styles/Text";
-import Card from "./styles/Card";
-import Heading from "./styles/Heading";
+import { Image } from "../styles/Image";
+import Text from "../styles/Text";
+import Card from "../styles/Card";
+import Heading from "../styles/Heading";
 
 function Brand({ brand, setActiveBrand }) {
   return (
