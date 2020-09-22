@@ -4,20 +4,35 @@ import CartItem from "./CartItem";
 
 function Cart() {
   const { cart } = useContext(CartContext);
-
   const cartItemIds = [...cart.cartId];
 
-  let inCart = <p>{"no items in cart"}</p>;
+  let inCart = <p> {"No items in cart"}</p>;
+  let subTotal = 0;
 
-  if (cartItemIds.length >= 0) {
+  if (cartItemIds.length > 0) {
     inCart = cartItemIds.map((item) => {
       const productIndex = cart.products.findIndex(
         (product) => item.id === product._id
       );
       //save product with the current index to cart
       const productToAdd = cart.products[productIndex];
-      // console.log(productToAdd)
-      return <CartItem productToAdd={productToAdd} key={item.id} />;
+
+      let productIdFound = cartItemIds.filter(
+        (item) => item.id === productToAdd.id
+      );
+      let quantity = productIdFound.map((item) => item.quantity);
+      let productTotal = quantity * productToAdd.price;
+
+      subTotal += productTotal;
+
+      return (
+        <CartItem
+          productToAdd={productToAdd}
+          quantity={quantity}
+          productTotal={productTotal}
+          key={item.id}
+        />
+      );
     });
   }
 
@@ -43,6 +58,7 @@ function Cart() {
         </svg>
       </span>
       {inCart}
+      Subtotal {subTotal.toFixed(2)}
     </article>
   );
 }
