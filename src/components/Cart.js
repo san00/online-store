@@ -36,6 +36,10 @@ function Cart() {
     });
   }
 
+  let numberOfItemsInCart = cartItemIds.reduce((item, value) => {
+    return item + value.quantity;
+  }, 0);
+
   return (
     <article>
       <span>
@@ -56,6 +60,7 @@ function Cart() {
           <circle cx="17" cy="19" r="2" />
           <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
         </svg>
+        {numberOfItemsInCart}
       </span>
       {inCart}
       Subtotal {subTotal.toFixed(2)}
