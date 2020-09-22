@@ -4,22 +4,41 @@ import CartItem from "./CartItem";
 
 function Cart() {
   const { cart } = useContext(CartContext);
-
   const cartItemIds = [...cart.cartId];
 
-  let inCart = <p>{"no items in cart"}</p>;
+  let inCart = <p> {"No items in cart"}</p>;
+  let subTotal = 0;
 
-  if (cartItemIds.length >= 0) {
+  if (cartItemIds.length > 0) {
     inCart = cartItemIds.map((item) => {
       const productIndex = cart.products.findIndex(
         (product) => item.id === product._id
       );
       //save product with the current index to cart
       const productToAdd = cart.products[productIndex];
-      // console.log(productToAdd)
-      return <CartItem productToAdd={productToAdd} key={item.id} />;
+
+      let productIdFound = cartItemIds.filter(
+        (item) => item.id === productToAdd.id
+      );
+      let quantity = productIdFound.map((item) => item.quantity);
+      let productTotal = quantity * productToAdd.price;
+
+      subTotal += productTotal;
+
+      return (
+        <CartItem
+          productToAdd={productToAdd}
+          quantity={quantity}
+          productTotal={productTotal}
+          key={item.id}
+        />
+      );
     });
   }
+
+  let numberOfItemsInCart = cartItemIds.reduce((item, value) => {
+    return item + value.quantity;
+  }, 0);
 
   return (
     <article>
@@ -41,8 +60,10 @@ function Cart() {
           <circle cx="17" cy="19" r="2" />
           <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
         </svg>
+        {numberOfItemsInCart}
       </span>
       {inCart}
+      Subtotal {subTotal.toFixed(2)}
     </article>
   );
 }
