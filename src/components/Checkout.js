@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Heading from '../styles/Heading';
-
+import Cart from './Cart';
 
 function Checkout() {
     const [signinDetails, setSigninDetails] = useState({
@@ -21,6 +21,7 @@ function Checkout() {
       
       return (
         <section>
+           <Cart/>
             <Heading h2>Checkout</Heading>
           <form onSubmit={handleSubmit}>
             <input
