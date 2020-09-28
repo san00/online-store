@@ -20,7 +20,7 @@ function App() {
       <Router>
       <GlobalStyle/>
         <Navbar />
-        <FetchBrands />
+        <Route path="/" exact component={FetchBrands} />
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
         <Route path="/checkout" component={Checkout} />
