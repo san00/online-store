@@ -25,5 +25,19 @@ display: flex;
 `
 export const CardImage = styled.img`
 object-fit:cover;
+position:absolute;
+left:0;
+border-radius:50%;
+background:#ffffff;
 max-width: 50%;
+`
+
+export const CardBkgrndImage = styled.img`
+height: 100px;
+object-fit:cover;
+position:relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-bottom:3.4em;
 `

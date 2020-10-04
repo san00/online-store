@@ -9,7 +9,10 @@ import {
   CardDetails,
   CardDetailsInner,
   CardImage,
+  CardBkgrndImage,
 } from "../styles/BrandCard";
+
+import Beer from "../images/beer.jpg";
 
 function Brand({ brand, setActiveBrand }) {
   return (
@@ -19,6 +22,7 @@ function Brand({ brand, setActiveBrand }) {
           setActiveBrand(brand.brews[0].name);
         }}
       >
+        <CardBkgrndImage src={Beer} alt="a glass of beer"/>
         <CardImage
           src={`http://localhost:1337${brand.image[0].url}`}
           alt="brand logo"
