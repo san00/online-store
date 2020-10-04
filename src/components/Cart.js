@@ -1,6 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
+
+import Button from "../styles/Button";
 
 function Cart() {
   const { cart } = useContext(CartContext);
@@ -24,7 +27,6 @@ function Cart() {
       let productTotal = quantity * productToAdd.price;
 
       subTotal += productTotal;
-
       return (
         <CartItem
           productToAdd={productToAdd}
@@ -39,6 +41,10 @@ function Cart() {
   let numberOfItemsInCart = cartItemIds.reduce((item, value) => {
     return item + value.quantity;
   }, 0);
+
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(cartItemIds));
+  }, [cartItemIds]);
 
   return (
     <article>
@@ -64,6 +70,9 @@ function Cart() {
       </span>
       {inCart}
       Subtotal {subTotal.toFixed(2)}
+      <Link to={`/checkout`}>
+        <Button>Buy now</Button>
+      </Link>
     </article>
   );
 }
