@@ -17,7 +17,7 @@ function BrandsList({ query }) {
   ) : (
     <h2>'Unable to load brands'</h2>
   );
-  return <Flex justifyAround>{displayResults}</Flex>;
+  return <Flex justifyCenter>{displayResults}</Flex>;
 }
 
 export default BrandsList;
