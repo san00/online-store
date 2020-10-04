@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Heading from '../styles/Heading';
 import Cart from './Cart';
+import {CardElement} from '@stripe/react-stripe-js'
 
 function Checkout() {
     const [signinDetails, setSigninDetails] = useState({
@@ -21,7 +22,7 @@ function Checkout() {
       
       return (
         <section>
-           <Cart/>
+         
             <Heading h2>Checkout</Heading>
           <form onSubmit={handleSubmit}>
             <input
@@ -64,11 +65,13 @@ function Checkout() {
               onChange={handleChange}
             ></input>
             <label>post code</label>
+            <div><CardElement/></div>
             <div>
-              <input type="submit" id="submit" value="submit"></input>
-              <label>Submit</label>
-            </div>
+              <input type="submit" id="submit" value="pay with card"></input>
+              <label>Pay with card</label>
+            </div>           
           </form>
+          <Cart/>
         </section>
       );
 }
