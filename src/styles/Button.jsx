@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledButton = styled.button`
     border-radius: 5px;
@@ -18,6 +18,16 @@ const StyledButton = styled.button`
     &:hover{
         background-color:${props => (props.secondary ? '#fcc4a6' : '#a1cdf1')};
     }
+    ${props => {
+        return (
+            props.brands &&
+            css`
+                background-color: #c3d3dd;
+                color: #31435b;
+                font-weight:600;
+            `
+        )
+    }}
 `
 
 const Button = ({ secondary, small, children, ...props }) => {

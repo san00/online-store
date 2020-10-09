@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import Text from "../styles/Text";
 import Heading from "../styles/Heading";
@@ -9,14 +8,14 @@ import {
   CardDetails,
   CardDetailsInner,
   CardImage,
-  CardBkgrndImage,
+  CardBkgrndImage,CardLink
 } from "../styles/BrandCard";
 
 import Beer from "../images/beer.jpg";
 
 function Brand({ brand, setActiveBrand }) {
   return (
-    <Link to={`/brews/${brand.id}`}>
+    <CardLink to={`/brews/${brand.id}`}>
       <Container
         onClick={() => {
           setActiveBrand(brand.brews[0].name);
@@ -34,10 +33,10 @@ function Brand({ brand, setActiveBrand }) {
           </Text>
         </CardDetails>
         <CardDetailsInner>
-          <Button>See brews</Button>
+          <Button brands >See brews</Button>
         </CardDetailsInner>
       </Container>
-    </Link>
+    </CardLink>
   );
 }
 
