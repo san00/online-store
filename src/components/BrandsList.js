@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Brand from "./Brand";
 
 import Flex from "../styles/Flex";
+import Heading from "../styles/Heading";
 
 function BrandsList({ query }) {
   const [activeBrand, setActiveBrand] = useState("");
@@ -17,7 +18,14 @@ function BrandsList({ query }) {
   ) : (
     <h2>'Unable to load brands'</h2>
   );
-  return <Flex justifyAround>{displayResults}</Flex>;
+  return (
+    <section>
+      <Flex justifyCenter>
+        <Heading h3>Brands we stock</Heading>
+      </Flex>
+      <Flex justifyCenter>{displayResults}</Flex>
+    </section>
+  );
 }
 
 export default BrandsList;
