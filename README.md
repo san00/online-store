@@ -1,4 +1,4 @@
-# E-commerce app 
+# E-commerce app (2020)
 
 A responsive fullstack online drinks shop, designed & built from scratch with React, GraphQL & Strapi.
 
